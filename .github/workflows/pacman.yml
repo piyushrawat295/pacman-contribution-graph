@@ -1,17 +1,19 @@
 name: Generate Pac-Man contribution graph
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
-  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Pac-Man graph
-        uses: docker://ghcr.io/maurodesouza/pacman-contribution-graph
-
+        uses: docker://ghcr.io/maurodesouza/pacman-contribution-graph:latest
         with:
           github_user_name: piyushrawat295
 
