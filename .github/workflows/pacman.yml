@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Generate Pac-Man graph
         uses: docker://ghcr.io/maurodesouza/pacman-contribution-graph
+
         with:
           github_user_name: piyushrawat295
 
