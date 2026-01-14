@@ -1,0 +1,23 @@
+name: Generate Pac-Man contribution graph
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Pac-Man graph
+        uses: docker://ghcr.io/maurodesouza/pacman-contribution-graph
+        with:
+          github_user_name: piyushrawat295
+
+      - name: Deploy to output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
